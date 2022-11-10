@@ -23,12 +23,7 @@ public abstract class Unit : MonoBehaviour,
         m_Agent.acceleration = 999;
         m_Agent.angularSpeed = 999;
     }
-
-    private void Start()
-    {
-
-    }
-
+    
     void SetColor(Color c)
     {
         var colorHandler = GetComponentInChildren<ColorHandler>();
@@ -38,6 +33,13 @@ public abstract class Unit : MonoBehaviour,
         }
     }
 
+    private void Start()
+    {
+        if (MainManager.Instance != null)
+        {
+            SetColor(MainManager.Instance.TeamColor);
+        }
+    }
     private void Update()
     {
         if (m_Target != null)
